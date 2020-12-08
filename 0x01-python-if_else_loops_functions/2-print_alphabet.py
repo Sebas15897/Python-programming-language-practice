@@ -1,3 +1,3 @@
 #!/usr/bin/python3
-for abc in range(97, 123):
-    print('{:abc}'.format(abc), end='')
+for a in range(97, 123):
+    print('{:c}'.format(a), end='')
