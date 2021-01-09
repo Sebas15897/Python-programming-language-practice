@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" A simple functino that adds 2 integers and returns the result """
+""" This is a simple function that adds two integers and returns the result """
 
 
 def add_integer(a, b=98):
