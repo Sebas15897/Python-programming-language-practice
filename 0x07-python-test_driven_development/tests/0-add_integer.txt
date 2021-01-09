@@ -1,39 +1,49 @@
-# doctest-0_add.py
-""" Attempting to test doing TDD to add 2 integers """
-
+# doctest_0-add_integer.py
+""" doctest class """
 
 >>> add_integer = __import__('0-add_integer').add_integer
 
->>> add_integer(1, 2)
-3
+>>> add_integer(4, 5)
+9
 
->>> add_integer(0, 2)
-2
+>>> add_integer(5, -10)
+-5
 
->>> add_integer(1)
-99
+>>> add_integer(5.4, 5.3)
+10
 
->>> add_integer(-1)
-97
+>>> add_integer("ff", 7)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
 
->>> add_integer(-1, 99)
-98
+>>> add_integer(1, "abc")
+Traceback (most recent call last):
+...
+TypeError: b must be an integer
 
->>> add_integer(1.11)
-99
+>>> add_integer({1})
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+>>> add_integer(None)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
 
 >>> add_integer()
 Traceback (most recent call last):
 ...
 TypeError: add_integer() missing 1 required positional argument: 'a'
 
->>> add_integer('j')
+>>> add_integer(float('NaN'))
 Traceback (most recent call last):
 ...
-TypeError: a must be an integer
+ValueError: cannot convert float NaN to integer
 
->>> add_integer(1, 'j')
+>>> add_integer(float('inf'))
 Traceback (most recent call last):
 ...
-TypeError: b must be an integer
-
+OverflowError: cannot convert float infinity to integer
