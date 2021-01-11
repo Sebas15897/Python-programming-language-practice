@@ -1,2 +1,5 @@
 #!/usr/bin/python3
-class Rectangle():
+class Rectangle(object):
+	 	"""docstring for Rectangle"""
+	 	pass
+  
