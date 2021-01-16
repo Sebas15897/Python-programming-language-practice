@@ -1,36 +1,43 @@
 #!/usr/bin/python3
-'''
-The module define a function called matrix_divided
-'''
+"""
+    >>> matrix = [
+    ...     [1, 2, 3],
+    ...     [4, 5, 6]
+    ... ]
+    >>> tester.matrix_divided(matrix, 3)
+    [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+"""
 
 
 def matrix_divided(matrix, div):
     """
-    a function to divide a matrix by a constant
+    >>> c = matrix_divided(matrix, 3)
     """
-    if type(matrix) is not list or len(matrix) is 0:
-        raise TypeError("matrix must be a matrix\
-        (list of lists) of integers/floats")
+    if matrix is None:
+        str1 = "matrix must be a matrix (list of lists)"
+        raise TypeError(str1 + ' of integers/floats')
     for i in range(len(matrix)):
-        if type(matrix[i]) is not list:
-            raise TypeError("matrix must be a matrix\
-            (list of lists) of integers/floats")
-        if len(matrix[0]) is 0:
-            raise TypeError("matrix must be a matrix\
-            (list of lists) of integers/floats")
-        if len(matrix[0]) is not len(matrix[i]):
-            raise TypeError("Each row of the matrix must have the same size")
-        for element in matrix[i]:
-            if type(element) is not int and type(element) is not float:
-                raise TypeError("matrix must be a matrix (list of lists) of \
-                integers/floats")
-    if type(div) not in [int, float]:
-        raise TypeError("div must be a number")
-    elif div == 0:
-        raise ZeroDivisionError("division by zero")
-    return [list(map(lambda n: round((n / div), 2), sub)) for sub in matrix]
+        if matrix[i] is None:
+            str1 = "matrix must be a matrix (list of lists)"
+            raise TypeError(str1 + ' of integers/floats')
+        for j in range(len(matrix[i])):
+            tipo = type(matrix[i][j])
+            if tipo is not int and tipo is not float:
+                str1 = "matrix must be a matrix (list of lists)"
+                raise TypeError(str1 + ' of integers/floats')
+    rowlen = len(matrix[0])
+    for i in range(len(matrix)):
+        if len(matrix[i]) is not rowlen:
+            raise TypeError('Each row of the matrix must have the same size')
+    if type(div) is not int and type(div) is not float:
+        raise TypeError('div must be a number')
+    if div == 0:
+        raise ZeroDivisionError('division by zero')
+    nx = list(map(lambda its: list(map(lambda x: ef(x, div), its)), matrix))
+    return nx
 
 
-if __name__ == "__main__":
-    import doctest
-    doctest.testfile("tests/2-matrix_divided.txt")
+def ef(x, div):
+    if div == float('inf') and x < 0:
+        x = x * -1
+    return round(x / div, 2)
