@@ -1,132 +1,36 @@
-Test for ```matrix_divided```
-"""
- Test function that divides all the matrix by a constant.
-- Prototype: def matrix_divided(matrix, div):
-- matrix must be a list of lists of integers or floats, otherwise raise a TypeError exception with the message matrix must be a matrix (list of lists) of integers/floats
-- Each row of the matrix must be of the same size, otherwise raise a TypeError exception with the message Each row of the matrix must have the same size
-- div must be a number (integer or float), otherwise raise a TypeError exception with the message div must be a number
-- div cant be equal to 0, otherwise raise a ZeroDivisionError exception with the message division by zero
-- All elements of the matrix should be divided by div, rounded to 2 decimal places
-- Returns a new matrix
-- You are not allowed to import any module
-"""
------------------------
-Checking docstring mod:
-    >>> __import__('2-matrix_divided').__doc__ != None
-    True
+#!/usr/bin/python3
+'''
+The module define a function called matrix_divided
+'''
 
-Import matrix_divided function:
 
-    >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+def matrix_divided(matrix, div):
+    """
+    a function to divide a matrix by a constant
+    """
+    if type(matrix) is not list or len(matrix) is 0:
+        raise TypeError("matrix must be a matrix\
+        (list of lists) of integers/floats")
+    for i in range(len(matrix)):
+        if type(matrix[i]) is not list:
+            raise TypeError("matrix must be a matrix\
+            (list of lists) of integers/floats")
+        if len(matrix[0]) is 0:
+            raise TypeError("matrix must be a matrix\
+            (list of lists) of integers/floats")
+        if len(matrix[0]) is not len(matrix[i]):
+            raise TypeError("Each row of the matrix must have the same size")
+        for element in matrix[i]:
+            if type(element) is not int and type(element) is not float:
+                raise TypeError("matrix must be a matrix (list of lists) of \
+                integers/floats")
+    if type(div) not in [int, float]:
+        raise TypeError("div must be a number")
+    elif div == 0:
+        raise ZeroDivisionError("division by zero")
+    return [list(map(lambda n: round((n / div), 2), sub)) for sub in matrix]
 
-check functions docstring:
 
-    >>> matrix_divided.__doc__ != None
-    True
-
-Basic use function:
-
-    >>> matrix_divided([[2, 3, 4], [2, 3, 4]], 3)
-    [[0.67, 1.0, 1.33], [0.67, 1.0, 1.33]]
-    >>> matrix_divided([[2, 3, 4], [2, 3, 4]], 10)
-    [[0.2, 0.3, 0.4], [0.2, 0.3, 0.4]]
-    >>> matrix_divided([[2, 3, 4], [2, 3, 4]], 150)
-    [[0.01, 0.02, 0.03], [0.01, 0.02, 0.03]]
-
-Basic use with negative numbers:
-
-    >>> matrix_divided([[2, 3, 4], [2, 3, 4]], -3)
-    [[-0.67, -1.0, -1.33], [-0.67, -1.0, -1.33]]
-    >>> matrix_divided([[2, 3, 4], [2, 3, 4]], -10)
-    [[-0.2, -0.3, -0.4], [-0.2, -0.3, -0.4]]
-    >>> matrix_divided([[-2, -3, -4], [-2, -3, -4]], -150)
-    [[0.01, 0.02, 0.03], [0.01, 0.02, 0.03]]
-
-Basic use with complex numbers:
-
-    >>> matrix_divided([[2, 3, 4], [2, 3, 4]], 5j)
-    Traceback (most recent call last):
-    ...
-    TypeError: div must be a number
-
-    >>> matrix_divided([[2, 3j, 4], [2, 3, 4]], 5)
-    Traceback (most recent call last):
-    ...
-    TypeError: matrix must be a matrix (list of lists) of integers/floats
-
-Float use test:
-
-    >>> matrix_divided([[2, 3, 4], [2, 3, 4]], 5.5)
-    [[0.36, 0.55, 0.73], [0.36, 0.55, 0.73]]
-    >>> matrix_divided([[2, 3.3, 4], [2, 3, 4]], 5)
-    [[0.4, 0.66, 0.8], [0.4, 0.6, 0.8]]
-    >>> matrix_divided([[2, 3, 4.5], [2, 3, 4]], 5.5)
-    [[0.36, 0.55, 0.82], [0.36, 0.55, 0.73]]
-    >>> matrix_divided([[2, 3, 4], [2, 3, 4]], None)
-    Traceback (most recent call last):
-    ...
-    TypeError: div must be a number
-
-Float infinitive:
-
-    >>> matrix_divided([[2, 3, 4], [2, 3, 4]], float('inf'))
-    [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
-
-Pass String Chech arg 1 (a):
-
-    >>> matrix_divided([[2, 3, 4], [2, 3, 4]])
-    Traceback (most recent call last):
-    ...
-    TypeError: matrix_divided() missing 1 required positional argument: 'div'
-    >>> matrix_divided(5)
-    Traceback (most recent call last):
-    ...
-    TypeError: matrix_divided() missing 1 required positional argument: 'div'
-    >>> matrix_divided("Hola")
-    Traceback (most recent call last):
-    ...
-    TypeError: matrix_divided() missing 1 required positional argument: 'div'
-
-Check the list argument and div:
-
-    >>> matrix_divided([[2, 3, 4], [2, 3, 4]], "5")
-    Traceback (most recent call last):
-    ...
-    TypeError: div must be a number
-
-    >>> matrix_divided([[2, 3, 4], [2, 3, 4]], "5")
-    Traceback (most recent call last):
-    ...
-    TypeError: div must be a number
-
-Check if the list of lists is empty:
-
-    >>> matrix_divided([], 5)
-    Traceback (most recent call last):
-    ...
-    TypeError: matrix must be a matrix(list of lists) of integers/floats
-    >>> matrix_divided([[], []], 5)
-    Traceback (most recent call last):
-    ...
-    TypeError: matrix must be a matrix(list of lists) of integers/floats
-
-Check if the element in the list is int or not:
-
-    >>> matrix_divided([[2, "3", 4], [2, 3, 4]], 5)
-    Traceback (most recent call last):
-    ...
-    TypeError: matrix must be a matrix (list of lists) of integers/floats
-
-Check if the list has a different size:
-
-    >>> matrix_divided([[2, 3, 4], [2, 3, 4, 5]], 5)
-    Traceback (most recent call last):
-    ...
-    TypeError: Each row of the matrix must have the same size
-
-Check if the list has a different size:
-
-    >>> matrix_divided([2, 3, 5], 5)
-    Traceback (most recent call last):
-    ...
-    TypeError: matrix must be a matrix(list of lists) of integers/floats
+if __name__ == "__main__":
+    import doctest
+    doctest.testfile("tests/2-matrix_divided.txt")
