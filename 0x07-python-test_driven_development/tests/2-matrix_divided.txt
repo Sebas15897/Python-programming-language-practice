@@ -1,4 +1,3 @@
-  
 #2-matrix_divided
 """ TDD: Divide all elements of a matrix """
 
