@@ -1,18 +1,14 @@
 #!/usr/bin/python3
-""" Indentation """
+"""Text indentation"""
 
 
 def text_indentation(text):
-    """ Indent """
+    """
+    function that prints a text with 2 new lines
+    after each of these characters: ., ? and :
+    """
     if not isinstance(text, str):
         raise TypeError("text must be a string")
-    vari = 1
-    for l in text:
-        if vari is 1 and l is " ":
-            pass
-        else:
-            print(l, end="")
-            vari = 0
-        if l is '.' or l is '?' or l is ':':
-            print("\n")
-            vari = 1
+    s = "".join([word if word not in ".?:"
+                 else word + "\n\n" for word in text])
+    print("\n".join([l.strip() for l in s.split("\n")]), end="")
