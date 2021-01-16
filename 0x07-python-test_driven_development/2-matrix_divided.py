@@ -1,27 +1,42 @@
 #!/usr/bin/python3
-""" Divide a matrix by a given number """
+"""Function to divide matrix"""
 
 
 def matrix_divided(matrix, div):
-    if not isinstance(matrix, list):
-        raise TypeError("Must be a matrix")
-    elif 
-        raise TypeError("Each row of the matrix must have the same size div")
-    elif not all(type(val) is int or type(val) is float for val in matrix[0]):
-        raise TypeError("matrix must be a matrix (list of lists) of \
-integers/floats")
-    elif not all(type(val) != int or type(val) != float for val in matrix[1]):
-        raise TypeError("matrix must be a matrix (list of lists) of \
-integers/floats")
-    elif div == 0:
-        raise ZeroDivisionError("division by zero")
-    elif type(div) is not int and type(div) is not float:
-        raise TypeError("div must be a number")
+    """ Returning a divided matrix """
+    div_matrix = []
 
-    copy = [row[:] for row in matrix]
-    count = 0
-    for li in matrix:
-        for idx in range(len(li)):
-            copy[count][idx] = float(round(copy[count][idx] / div, 2))
-        count += 1
-    return copy
+    if not isinstance(matrix, list):
+        raise TypeError("matrix must be a matrix \
+(list of lists) of integers/floats")
+
+    for ele in matrix:
+        if not matrix:
+            raise TypeError("matrix must be a matrix \
+(list of lists) of integers/floats")
+
+        if type(ele) is not list:
+            raise TypeError("matrix must be a matrix \
+(list of lists) of integers/floats")
+
+        for ele2 in ele:
+            if not ele:
+                raise TypeError("matrix must be matrix \
+(list of lists) of integers/floats")
+
+            if type(ele2) not in [int, float]:
+                raise TypeError("matrix must be a \
+matrix (list of lists) of integers/floats")
+
+        if len(ele) != len(matrix[0]):
+            raise TypeError("Each row of the matrix must \
+have the same size")
+
+        if type(div) not in [int, float]:
+            raise TypeError("div must be a number")
+        if div == 0:
+            raise ZeroDivisionError("division by zero")
+
+    div_matrix = [[round(ele2 / div, 2) for ele2 in ele] for ele in matrix]
+
+    return div_matrix
