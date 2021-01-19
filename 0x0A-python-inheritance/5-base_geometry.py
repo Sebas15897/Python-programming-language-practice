@@ -2,4 +2,5 @@
 """ module defines a BaseGeometry """
 
 class BaseGeometry():
+	"""docstring for BaseGeometry"""
     pass
