@@ -1,7 +1,8 @@
 #!/usr/bin/python3
-""" module defines a BaseGeometry """
+""" empty class"""
 
 
 class BaseGeometry():
-  """ docstring for BaseGeometry """
-  pass
+    """ Defines empty class BaseGeometry """
+    pass
+  
