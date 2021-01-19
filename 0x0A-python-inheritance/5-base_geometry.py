@@ -3,4 +3,3 @@
 
 class BaseGeometry():
 	"""docstring for BaseGeometry"""
-    pass
