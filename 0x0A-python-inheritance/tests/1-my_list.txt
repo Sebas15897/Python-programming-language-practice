@@ -1,4 +1,4 @@
-The ``1-my_list`` module and task 
+The ``1-my_list`` module and task 1
 ======================
 
 Using ``print_sorted`` methods of MyList subclass
