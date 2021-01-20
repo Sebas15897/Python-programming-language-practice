@@ -1,1 +1,3 @@
-sdklfjklsadfjklasdj
+The ``7-base_geometry`` module and task 7
+======================
+
