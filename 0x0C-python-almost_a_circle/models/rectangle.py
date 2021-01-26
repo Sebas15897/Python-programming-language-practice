@@ -1,42 +1,41 @@
 #!/usr/bin/python3
-"""import"""
-from models.base import Base
+""" Initializes module and import Base """
+from .base import Base
 
 
 class Rectangle(Base):
-    """docstring for Base"""
-
+    """ Class that inherits from super class Base"""
     def __init__(self, width, height, x=0, y=0, id=None):
-        """Initialize the attributes"""
+        """ Initial state of new instances"""
+        super().__init__(id)
         self.width = width
         self.height = height
         self.x = x
         self.y = y
-        super().__init__(id)
 
     @property
     def width(self):
-        """Getter"""
+        """ Gets the width """
         return self.__width
 
     @property
     def height(self):
-        """Getter"""
+        """ Gets the height """
         return self.__height
 
     @property
     def x(self):
-        """Getter"""
+        """ Gets x """
         return self.__x
 
     @property
     def y(self):
-        """Getter"""
+        """ Gets y """
         return self.__y
 
     @width.setter
     def width(self, value):
-        """Setter"""
+        """ Sets the width """
         if type(value) is not int:
             raise TypeError("width must be an integer")
         if value <= 0:
@@ -45,7 +44,7 @@ class Rectangle(Base):
 
     @height.setter
     def height(self, value):
-        """Setter"""
+        """ Sets the height """
         if type(value) is not int:
             raise TypeError("height must be an integer")
         if value <= 0:
@@ -54,7 +53,7 @@ class Rectangle(Base):
 
     @x.setter
     def x(self, value):
-        """Setter"""
+        """ Sets x """
         if type(value) is not int:
             raise TypeError("x must be an integer")
         if value < 0:
@@ -63,7 +62,7 @@ class Rectangle(Base):
 
     @y.setter
     def y(self, value):
-        """Setter"""
+        """ Sets the y """
         if type(value) is not int:
             raise TypeError("y must be an integer")
         if value < 0:
