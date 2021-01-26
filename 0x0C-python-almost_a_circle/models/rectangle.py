@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""This module contains the Rectangle Class"""
+"""import"""
 from models.base import Base
 
 
 class Rectangle(Base):
-    """Rectangle Class extends from Base"""
+    """docstring for Base"""
 
     def __init__(self, width, height, x=0, y=0, id=None):
         """Initialize the attributes"""
@@ -16,27 +16,27 @@ class Rectangle(Base):
 
     @property
     def width(self):
-        """Getter - obtain the width of the rectangle"""
+        """Getter"""
         return self.__width
 
     @property
     def height(self):
-        """Getter - obtain the height of the rectangle"""
+        """Getter"""
         return self.__height
 
     @property
     def x(self):
-        """Getter - obtain the x value of the rectangle"""
+        """Getter"""
         return self.__x
 
     @property
     def y(self):
-        """Getter - obtain the y value of the rectangle"""
+        """Getter"""
         return self.__y
 
     @width.setter
     def width(self, value):
-        """Setter - define the width value of the rectangle"""
+        """Setter"""
         if type(value) is not int:
             raise TypeError("width must be an integer")
         if value <= 0:
@@ -45,7 +45,7 @@ class Rectangle(Base):
 
     @height.setter
     def height(self, value):
-        """Setter - define the height value of the rectangle"""
+        """Setter"""
         if type(value) is not int:
             raise TypeError("height must be an integer")
         if value <= 0:
@@ -54,7 +54,7 @@ class Rectangle(Base):
 
     @x.setter
     def x(self, value):
-        """Setter - define the x value of the rectangle"""
+        """Setter"""
         if type(value) is not int:
             raise TypeError("x must be an integer")
         if value < 0:
@@ -63,7 +63,7 @@ class Rectangle(Base):
 
     @y.setter
     def y(self, value):
-        """Setter - define the y value of the rectangle"""
+        """Setter"""
         if type(value) is not int:
             raise TypeError("y must be an integer")
         if value < 0:
