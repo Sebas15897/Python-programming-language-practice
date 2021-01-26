@@ -2,6 +2,7 @@
 """Import"""
 from models.base import Base
 
+
 class Rectangle(Base):
 	"""docstring for Rectangle"""
 	def __init__(self, width, heigth, x, y):
