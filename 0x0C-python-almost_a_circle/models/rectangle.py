@@ -1,69 +1,71 @@
 #!/usr/bin/python3
-"""Import"""
+"""This module contains the Rectangle Class"""
 from models.base import Base
 
 
 class Rectangle(Base):
-	"""docstring for Rectangle"""
-	def __init__(self, width, heigth, x, y):
-		super().__init__(id)
-		self.width = width
-		self.heigth = heigth
-		self.x = x
-		self.y = y
+    """Rectangle Class extends from Base"""
 
-	@property
-	def width(self):
-		"""Width"""
-		return self._width
+    def __init__(self, width, height, x=0, y=0, id=None):
+        """Initialize the attributes"""
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y
+        super().__init__(id)
 
-	@property
-	def heigth(self):
-		"""Heigth"""
-		return self._heigth
+    @property
+    def width(self):
+        """Getter - obtain the width of the rectangle"""
+        return self.__width
 
-	@property
-	def x(self):
-		"""X"""
-		return self._x
+    @property
+    def height(self):
+        """Getter - obtain the height of the rectangle"""
+        return self.__height
 
-	@property
-	def y(self):
-		"""Y"""
-		return self._y
+    @property
+    def x(self):
+        """Getter - obtain the x value of the rectangle"""
+        return self.__x
 
-	@width.setter
-	def width(self, value):
-		"""Setter"""
-		if type(value) is not int:
-			raise typeError("width must be an integer")
-		if value <= 0:
-			raise ValueError("width must be > 0")
-		self.__width = value
+    @property
+    def y(self):
+        """Getter - obtain the y value of the rectangle"""
+        return self.__y
 
-	@heigth.setter
-	def heigth(self, value):
-		"""Setter"""
-		if type(value) is not int:
-			raise typeError("heigth must be an integer")
-		if value <= 0:
-			raise ValueError("width must be > 0")
-		self.__heigth = value
+    @width.setter
+    def width(self, value):
+        """Setter - define the width value of the rectangle"""
+        if type(value) is not int:
+            raise TypeError("width must be an integer")
+        if value <= 0:
+            raise ValueError("width must be > 0")
+        self.__width = value
 
-	@x.setter
-	def x(self, value):
-		"""setter"""
-		if type(value) is not int:
-			raise typeError("x must be an integer")
-		if value < 0:
-			raise ValueError("x must b >= 0")
-		self.__x = value
+    @height.setter
+    def height(self, value):
+        """Setter - define the height value of the rectangle"""
+        if type(value) is not int:
+            raise TypeError("height must be an integer")
+        if value <= 0:
+            raise ValueError("height must be > 0")
+        self.__height = value
 
-	@y.setter
-	def y(self, value):
-		"""setter"""
-		if type(value) is not int:
-			raise typeError("y must be an integer")
-		if value < 0:
-			raise typeError("y must b >= 0")
-		self.__y = value
+    @x.setter
+    def x(self, value):
+        """Setter - define the x value of the rectangle"""
+        if type(value) is not int:
+            raise TypeError("x must be an integer")
+        if value < 0:
+            raise ValueError("x must be >= 0")
+        self.__x = value
+
+    @y.setter
+    def y(self, value):
+        """Setter - define the y value of the rectangle"""
+        if type(value) is not int:
+            raise TypeError("y must be an integer")
+        if value < 0:
+            raise ValueError("y must be >= 0")
+        self.__y = value
