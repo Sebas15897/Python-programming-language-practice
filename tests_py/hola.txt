@@ -1,0 +1,5 @@
+Leer archivos de texto en Python
+La lectura de los archivos, al igual que la escritura, se puede hacer de dos maneras: línea a línea o de una sola vez.
+
+Leer el archivo de una vez
+El procedimiento para leer los archivos de texto más sencillo es hacerlo de una vez con el método readlines. Una vez abierto el archivo solamente se ha de llamar a este método para obtener el contenido. Por ejemplo, se puede usar el siguiente código.
