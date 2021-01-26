@@ -80,26 +80,33 @@ class Rectangle(Base):
             print(' ' * self.x, end="")
             print('#' * self.width)
    
-     def update(self, *args, **kwargs):
-        """ updates the attributes of the rectangle """
-        fields = ['id', '_Rectangle__width', '_Rectangle__height',
-                  '_Rectangle__x', '_Rectangle__y']
-        dic_fields = {
-                      'id': 'id', 'width': "_Rectangle__width",
-                      "height": '_Rectangle__height', "x": '_Rectangle__x',
-                      'y': '_Rectangle__y'
-                      }
-        if args:
-            for field, arg in zip(fields, args):
-                eq = False
-                if field == "x" or field == "y":
-                    eq = True
-                super().integer_validator(field, arg, eq)
-                self.__dict__[field] = arg
+    def update(self, *args, **kwargs):
+        "update the rectangle"
+        if args is None or len(args) == 0:
+            if 'id' in kwargs:
+                self.id = kwargs['id']
+            if 'width' in kwargs:
+                self.__width = kwargs['width']
+            if 'height' in kwargs:
+                self.__height = kwargs['height']
+            if 'x' in kwargs:
+                self.__x = kwargs['x']
+            if 'y' in kwargs:
+                self.__y = kwargs['y']
         else:
-            for key, value in kwargs.items():
-                eq = False
-                if key == "x" or key == "y":
-                    eq = True
-                super().integer_validator(key, value, eq)
-                self.__dict__[dic_fields[key]] = value
+            if len(args) < 1:
+                return
+            self.id = args[0]
+            if len(args) < 2:
+                return
+            self.__width = args[1]
+            if len(args) < 3:
+                return
+            self.__height = args[2]
+            if len(args) < 4:
+                return
+            self.__x = args[3]
+            if len(args) < 5:
+                return
+            self.__y = args[4]
+            
