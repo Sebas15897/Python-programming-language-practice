@@ -80,24 +80,26 @@ class Rectangle(Base):
             print(' ' * self.x, end="")
             print('#' * self.width)
    
-    def update(self, *arg, *kwargs):
-    	"""Update the attributes of the rectangle"""
-    	tke = ['id', '_Rectangle__width', '_Rectangle__height',
+     def update(self, *args, **kwargs):
+        """ updates the attributes of the rectangle """
+        fields = ['id', '_Rectangle__width', '_Rectangle__height',
                   '_Rectangle__x', '_Rectangle__y']
-        dic_tke = {'id': 'id', 'width': "_Rectangle__width",
+        dic_fields = {
+                      'id': 'id', 'width': "_Rectangle__width",
                       "height": '_Rectangle__height', "x": '_Rectangle__x',
-                      'y': '_Rectangle__y'}
+                      'y': '_Rectangle__y'
+                      }
         if args:
-        	for tke, arg in zip(tke, args):
-        		eq = False
-        		if tke == "x" or tkes == "y":
-        			eq = True
-        		super().integer_validator(field, arg, eq)
-        		self.__dict_[field] = arg
-        	else:
-        		for key, value in kwargs.items():
-        			eq = False
-        			if key == "x" or key == "y":
-        				eq = True
-        			super().integer_validator(key, value, eq)
-                	self.__dict__[dic_fields[key]] = value
+            for field, arg in zip(fields, args):
+                eq = False
+                if field == "x" or field == "y":
+                    eq = True
+                super().integer_validator(field, arg, eq)
+                self.__dict__[field] = arg
+        else:
+            for key, value in kwargs.items():
+                eq = False
+                if key == "x" or key == "y":
+                    eq = True
+                super().integer_validator(key, value, eq)
+                self.__dict__[dic_fields[key]] = value
