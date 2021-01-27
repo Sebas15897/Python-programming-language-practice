@@ -1,26 +1,26 @@
 #!/usr/bin/python3
-
+"""import"""
 from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-  
+    """doctring for Square"""
     def __init__(self, size, x=0, y=0, id=None):
-        "Initiation of Square class"
+        """Initiation of Square class"""
         super().__init__(size, size, x, y, id)
 
     @property
     def size(self):
-       
+       """size"""
         return super().width
 
     @size.setter
     def size(self, value):
-        
+        """size.setter"""
         super().__init__(value, value, self.x, self.y, self.id)
 
     def update(self, *args, **kwargs):
-        
+        """comets"""
         if args is None or len(args) == 0:
             if 'id' in kwargs:
                 self.id = kwargs['id']
@@ -46,7 +46,7 @@ class Square(Rectangle):
             self.y = args[3]
 
     def to_dictionary(self):
-        
+        """"dict"""
         d = {}
         d.setdefault('id', self.id)
         d.setdefault('size', super().width)
