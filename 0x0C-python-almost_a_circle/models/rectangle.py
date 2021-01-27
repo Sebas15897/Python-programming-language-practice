@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"Rectangle class inherits from base"
+"Rectangle class and import"
 from models.base import Base
 
 
@@ -31,12 +31,12 @@ class Rectangle(Base):
 
     @property
     def width(self):
-        "width getter"
+        "getter.with"
         return self.__width
 
     @width.setter
     def width(self, value):
-        "width setter"
+        "setter.width"
         if type(value) is not int:
             raise TypeError('width must be an integer')
         if value <= 0:
@@ -45,12 +45,12 @@ class Rectangle(Base):
 
     @property
     def height(self):
-        "height getter"
+        "getter.height"
         return self.__height
 
     @height.setter
     def height(self, value):
-        "height setter"
+        "setter.heigt"
         if type(value) is not int:
             raise TypeError('height must be an integer')
         if value <= 0:
