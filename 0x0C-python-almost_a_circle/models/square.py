@@ -1,55 +1,41 @@
 #!/usr/bin/python3
-"""import"""
+"""Class Square creation"""
+
+
+from models.base import Base
 from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """doctring for Square"""
+    """Class Square creation that inherits from Class Rectangle
+    """
     def __init__(self, size, x=0, y=0, id=None):
-        """Initiation of Square class"""
         super().__init__(size, size, x, y, id)
+
+    def __str__(self):
+        return ("[Square] ({}) {}/{} - {}".format(
+            self.id, self.x, self.y, self.width))
 
     @property
     def size(self):
-       """size"""
-        return super().width
+        """Getter to return size of the square"""
+        return self.width
 
     @size.setter
     def size(self, value):
-        """size.setter"""
-        super().__init__(value, value, self.x, self.y, self.id)
+        super().__setattr__('width', value)
+        super().__setattr__('height', value)
 
     def update(self, *args, **kwargs):
-        """comets"""
-        if args is None or len(args) == 0:
-            if 'id' in kwargs:
-                self.id = kwargs['id']
-            if 'size' in kwargs:
-                v = kwargs['size']
-                super().__init__(v, v, self.x, self.y, self.id)
-            if 'x' in kwargs:
-                self.x = kwargs['x']
-            if 'y' in kwargs:
-                self.y = kwargs['y']
+        """Method to update the values of the instances"""
+        list1 = ["id", "size", "x", "y"]
+        if args is None or not args:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
         else:
-            if len(args) < 1:
-                return
-            self.id = args[0]
-            if len(args) < 2:
-                return
-            super().__init__(args[1], args[1], self.x, self.y, self.id)
-            if len(args) < 3:
-                return
-            self.x = args[2]
-            if len(args) < 4:
-                return
-            self.y = args[3]
+            for arg in range(len(args)):
+                setattr(self, list1[arg], args[arg])
 
     def to_dictionary(self):
-        """"dict"""
-        d = {}
-        d.setdefault('id', self.id)
-        d.setdefault('size', super().width)
-        d.setdefault('x', self.x)
-        d.setdefault('y', self.y)
-        return d
+        """Method to return the dictionary representation of a Square"""
+        return dict(x=self.x, y=self.y, id=self.id, size=self.width)
