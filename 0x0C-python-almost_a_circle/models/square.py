@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Class Square creation"""
+"""Class Square and import"""
 
 
 from models.base import Base
@@ -7,7 +7,7 @@ from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """Class Square creation that inherits from Class Rectangle
+    """Class Square creation, from Class Rectangle
     """
     def __init__(self, size, x=0, y=0, id=None):
         super().__init__(size, size, x, y, id)
@@ -37,5 +37,5 @@ class Square(Rectangle):
                 setattr(self, list1[arg], args[arg])
 
     def to_dictionary(self):
-        """Method to return the dictionary representation of a Square"""
+        """dictionary representation"""
         return dict(x=self.x, y=self.y, id=self.id, size=self.width)
