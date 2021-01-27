@@ -7,12 +7,7 @@ class Rectangle(Base):
     "Rectangle"
     def __init__(self, width, height, x=0, y=0, id=None):
         "Initiation of Rectangle"
-        super().__init__(id)
-        self.__width = width
-        self.__height = height
-        self.__x = x
-        self.__y = y
-   
+        super().__init__(id)   
         if type(width) is not int:
             raise TypeError('width must be an integer')
         if type(height) is not int:
@@ -29,6 +24,11 @@ class Rectangle(Base):
             raise ValueError('x must be >= 0')
         if y < 0:
             raise ValueError('y must be >= 0')
+         
+        self.__width = width
+        self.__height = height
+        self.__x = x
+        self.__y = y
        
 
     @property
