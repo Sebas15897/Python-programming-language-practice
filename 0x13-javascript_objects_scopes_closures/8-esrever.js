@@ -1,4 +1,5 @@
 #!/usr/bin/node
+// function that returns the reversed version of a list.
 exports.esrever = (list) => {
   if (list == null) { return 0; }
   let length = list.length - 1;
