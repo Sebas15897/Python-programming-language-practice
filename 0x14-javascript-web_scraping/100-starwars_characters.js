@@ -1,36 +1,22 @@
 #!/usr/bin/node
 
 const request = require('request');
-request.get(
-  'http://swapi.co/api/films/' + process.argv[2],
-  { json: true },
-  function (error, response, body) {
-    if (error) { return; }
-
-    let index = 0;
-    const names = [];
-    const people = body.characters;
-
-    const finish = function () {
-      for (const name of names) { console.log(name); }
-    };
-
-    const loadPeople = function (error, response, body) {
-      if (error) { return; }
-
-      for (const character of body.results) {
-        if (character.url === people[index]) {
-          names.push(character.name);
-          index++;
-        }
-      }
-      if (body.next !== null && index < people.length) {
-        request.get(body.next, { json: true }, loadPeople);
-      } else {
-        finish();
-      }
-    };
-
-    request.get('http://swapi.co/api/people/', { json: true }, loadPeople);
-  }
-);
+if (process.argv.length >= 3) {
+  let url = 'http://swapi.co/api/films/' + process.argv[2];
+  request(url, function (error, response, body) {
+    if (error) {
+      console.log(error);
+    } else {
+      let characters = JSON.parse(body)['characters'];
+      characters.forEach(url => {
+        request(url, function (error, response, body) {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log(JSON.parse(body)['name']);
+          }
+        });
+      });
+    }
+  });
+}
